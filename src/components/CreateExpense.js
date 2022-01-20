@@ -25,15 +25,15 @@ function CreateExpense() {
             <form className="my-3">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={onChange}/>
+                    <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" minLength={5} onChange={onChange}/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="value" className="form-label">Value</label>
                     <input type="number" className="form-control" id="value" name="value" onChange={onChange}/>
                 </div>
                 <label htmlFor="category" className="form-label">Category</label>
-                <select className="form-select" aria-label="Select Category" name="category" id="category" onChange={onChange}>
-                <option selected>General</option>
+                <select className="form-select" aria-label="Select Category" defaultValue="general" name="category" id="category" onChange={onChange}>
+               
                     <option value="grocery">Grocery</option>
                     <option value="school">School</option>
                     <option value="shopping">Shopping</option>

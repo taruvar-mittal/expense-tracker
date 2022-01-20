@@ -45,7 +45,7 @@ const ExpenseState = (props) => {
 
 
   // Edit a expense
-  const editExpense = async (id, title, category, value) => {
+  const editExpense = async (id, title, value, category) => {
     // API Call 
     const response = await fetch(`${host}/api/expenses/updateexpense/${id}`, {
       method: 'PUT',

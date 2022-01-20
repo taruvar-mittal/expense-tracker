@@ -19,6 +19,10 @@ const UserSchema = new Schema({
         type : Number,
         default : 0
     },
+    categories : {
+        type : Array,
+        deafult : []
+    },
     date : {
         type : Date,
         default : Date.now

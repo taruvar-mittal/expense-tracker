@@ -4,7 +4,7 @@ import { Link, useLocation} from 'react-router-dom';
 function Navbar() {
     const location = useLocation();
   return <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div className="container-fluid">
     <Link className="navbar-brand" to="/">Expense Manager</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,10 +15,17 @@ function Navbar() {
         <li className="nav-item">
           <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/">Dashboard</Link>
         </li>
-        <li className="nav-item">
-          <Link className={`nav-link ${location.pathname === "/settings" ? "active" : ""}`} to="/settings">Settings</Link>
-        </li>
        
+        <li className="nav-item">
+          <Link className={`nav-link ${location.pathname === "/login" ? "active" : ""}`} to="/login">Login</Link>
+        </li>
+        
+        <li className="nav-item">
+          <Link className={`nav-link ${location.pathname === "/signup" ? "active" : ""}`} to="/signup">Sign Up</Link>
+        </li>
+ 
+        
+        
       </ul>
      
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Expenseitem(props) {
-    const { expense } = props;
+    const { expense, updateExpense} = props;
   return <>
     
     <li className="list-group-item">
@@ -16,8 +16,8 @@ function Expenseitem(props) {
         </span>
    
     <span className="mt-3">
-    <i className="far fa-edit mx-2"></i>
-    <i className="far fa-trash-alt mx-2"></i>
+    <i className="far fa-edit mx-2" onClick={()=>{updateExpense(expense)}}></i>
+    <i className="far fa-trash-alt mx-2" ></i>
 
     </span>
    
