@@ -3,6 +3,7 @@ import CreateExpense from './CreateExpense';
 import ExpenseContext from '../context/ExpenseContext';
 import Expenseitem from './Expenseitem';
 import { useNavigate  } from 'react-router-dom'
+import ExpenseChart from './ExpenseChart';
 
 function Expenses() {
     const context = useContext(ExpenseContext);
@@ -95,6 +96,7 @@ function Expenses() {
                 })}
       </ul>  
       </div>
+      <ExpenseChart expenses={expenses}/>
   </div>
   </div>  
   </div>

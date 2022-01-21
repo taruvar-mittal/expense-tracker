@@ -29,6 +29,10 @@ const toggleHover = () => {
         <li className="nav-item">
           <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/">Dashboard</Link>
         </li>
+
+        <li className="nav-item">
+          <Link className={`nav-link ${location.pathname === "/settings" ? "active" : ""}`} aria-current="page" to="/settings">Settings</Link>
+        </li>
        
         <li className="nav-item">
           <Link className={`nav-link ${location.pathname === "/login" ? "active" : ""}`} to="/login">Login</Link>

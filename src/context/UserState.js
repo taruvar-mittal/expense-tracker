@@ -5,11 +5,11 @@ import { useState } from 'react';
 const UserState = (props) => {
 
     // const initialtoken = "";
-    // const initialUser = {};
+    const initialUser = {};
         
 
     // const [token, setToken] = useState(initialtoken);
-    // const [user, setUser] = useState(initialUser);
+    const [user, setUser] = useState(initialUser);
 
     const host = "http://localhost:5000"
 
@@ -26,7 +26,7 @@ const UserState = (props) => {
             body: JSON.stringify({email, password})
         });
         const json = await response.json()
-        console.log(json);
+        // console.log(json);
         if (json.jwtToken){
             // Save the auth token and redirect
             // console.log('inside login');
@@ -51,7 +51,7 @@ const UserState = (props) => {
             body: JSON.stringify({name,email, password})
         });
         const json = await response.json()
-        console.log(json);
+        // console.log(json);
         if (json.authToken){
             // Save the auth token and redirect
             localStorage.setItem('token', json.authToken); 
@@ -62,30 +62,31 @@ const UserState = (props) => {
       }
 
 
-    // const getuser = async() => {
-    //     console.log('getuser');
-    //     const response = await fetch(`${host}/api/auth/getuser`, {
-    //         method: 'POST',
-    //         headers: {
-    //             'auth-token': token
-    //         },
+    const getuser = async(token) => {
+        console.log('getuser');
+        const response = await fetch(`${host}/api/auth/getuser`, {
+            method: 'POST',
+            headers: {
+                'auth-token': token
+            },
     
-    //     });
-    //     const json = await response.json()
-    //     console.log(json);
-    //     if (json.success){
-    //         // Save the auth token and redirect
-    //         setUser(json);
-    //         console.log(token);
-    //     }
-    //     else{
-    //         alert("no user found");
-    //     }
-    // }
+        });
+        const json = await response.json()
+        console.log(json);
+        if (json.success){
+            // Save the auth token and redirect
+            
+            setUser(json);
+            // console.log(token);
+        }
+        else{
+            alert("no user found");
+        }
+    }
     
 
   return (
-    <UserContext.Provider value={{ login, signup}}>
+    <UserContext.Provider value={{ login, signup, user, getuser}}>
       {props.children}
     </UserContext.Provider>
   )
