@@ -11,7 +11,7 @@ function CreateExpense() {
 
     const handleClick = (e)=>{
         e.preventDefault();
-        addExpense(expense.title, expense.value, expense.category);
+        addExpense(expense.title, expense.value, expense.category,localStorage.getItem('token'));
         setExpense(initialExpense);
     }
 

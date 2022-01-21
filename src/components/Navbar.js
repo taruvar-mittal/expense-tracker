@@ -1,8 +1,22 @@
-import React from 'react';
-import { Link, useLocation} from 'react-router-dom';
+import React, {useState} from 'react';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 
 function Navbar() {
     const location = useLocation();
+    let navigate = useNavigate();
+
+    const [hover,setHover] = useState(false);
+
+    
+const toggleHover = () => {
+	setHover(!hover)
+}
+
+
+    const handleLogout = () => {
+      localStorage.removeItem('token');
+      navigate('/login');
+    }
   return <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div className="container-fluid">
@@ -23,7 +37,10 @@ function Navbar() {
         <li className="nav-item">
           <Link className={`nav-link ${location.pathname === "/signup" ? "active" : ""}`} to="/signup">Sign Up</Link>
         </li>
- 
+        
+        <li className="nav-item">
+          <form><button className="btn btn-dark"  onMouseEnter={toggleHover} onMouseLeave={toggleHover} style={!hover ? {color:"#ffffff8c"} : {color : "white"}} onClick={handleLogout}>Logout</button></form>
+        </li>
         
         
       </ul>

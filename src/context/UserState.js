@@ -4,10 +4,12 @@ import { useState } from 'react';
 
 const UserState = (props) => {
 
-    const initialtoken = "";
+    // const initialtoken = "";
+    // const initialUser = {};
         
 
-    const [token, setToken] = useState(initialtoken);
+    // const [token, setToken] = useState(initialtoken);
+    // const [user, setUser] = useState(initialUser);
 
     const host = "http://localhost:5000"
 
@@ -25,10 +27,12 @@ const UserState = (props) => {
         });
         const json = await response.json()
         console.log(json);
-        if (json.success){
+        if (json.jwtToken){
             // Save the auth token and redirect
-            setToken(json.jwtToken);
-
+            // console.log('inside login');
+            localStorage.setItem('token', json.jwtToken); 
+            // console.log(localStorage.getItem('token'));
+            
         }
         else{
             alert("Invalid credentials");
@@ -48,10 +52,9 @@ const UserState = (props) => {
         });
         const json = await response.json()
         console.log(json);
-        if (json.success){
+        if (json.authToken){
             // Save the auth token and redirect
-            setToken(json.authToken);
-            console.log(token);
+            localStorage.setItem('token', json.authToken); 
         }
         else{
             alert("Invalid credentials");
@@ -59,11 +62,30 @@ const UserState = (props) => {
       }
 
 
+    // const getuser = async() => {
+    //     console.log('getuser');
+    //     const response = await fetch(`${host}/api/auth/getuser`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'auth-token': token
+    //         },
     
+    //     });
+    //     const json = await response.json()
+    //     console.log(json);
+    //     if (json.success){
+    //         // Save the auth token and redirect
+    //         setUser(json);
+    //         console.log(token);
+    //     }
+    //     else{
+    //         alert("no user found");
+    //     }
+    // }
     
 
   return (
-    <UserContext.Provider value={{ login, token, signup}}>
+    <UserContext.Provider value={{ login, signup}}>
       {props.children}
     </UserContext.Provider>
   )

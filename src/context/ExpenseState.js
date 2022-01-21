@@ -12,13 +12,13 @@ const ExpenseState = (props) => {
     const [expenses, setExpenses] = useState(initialExpenses);
 
    // Get all expenses
-   const getExpenses = async () => {
+   const getExpenses = async (token) => {
     // API Call 
     const response = await fetch(`${host}/api/expenses/fetchallexpenses`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODE1ZDVkODczMzRiNjY5ZjkyY2M5In0sImlhdCI6MTY0MjYwMDE4M30.crYBtE2NS0djjWWTCHRsboCQnPHsJcgsbBH_aZnZJbM"
+        "auth-token": token
       }
     });
     const json = await response.json() 
@@ -27,14 +27,14 @@ const ExpenseState = (props) => {
   }
 
   // Add a expense
-  const addExpense = async (title, value, category) => {
+  const addExpense = async (title, value, category,token) => {
     // TODO: API Call
     // API Call 
     const response = await fetch(`${host}/api/expenses/createexpense`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODE1ZDVkODczMzRiNjY5ZjkyY2M5In0sImlhdCI6MTY0MjYwMDE4M30.crYBtE2NS0djjWWTCHRsboCQnPHsJcgsbBH_aZnZJbM"
+        "auth-token": token
       },
       body: JSON.stringify({title, value, category})
     });
@@ -45,13 +45,13 @@ const ExpenseState = (props) => {
 
 
   // Edit a expense
-  const editExpense = async (id, title, value, category) => {
+  const editExpense = async (id, title, value, category,token) => {
     // API Call 
     const response = await fetch(`${host}/api/expenses/updateexpense/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODE1ZDVkODczMzRiNjY5ZjkyY2M5In0sImlhdCI6MTY0MjYwMDE4M30.crYBtE2NS0djjWWTCHRsboCQnPHsJcgsbBH_aZnZJbM"
+        "auth-token": token
       },
       body: JSON.stringify({title, value, category})
     });

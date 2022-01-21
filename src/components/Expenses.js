@@ -2,13 +2,19 @@ import React,{ useContext, useEffect, useRef, useState} from 'react';
 import CreateExpense from './CreateExpense';
 import ExpenseContext from '../context/ExpenseContext';
 import Expenseitem from './Expenseitem';
+import { useNavigate  } from 'react-router-dom'
 
 function Expenses() {
     const context = useContext(ExpenseContext);
     const { expenses,getExpenses,editExpense} = context;
-   
+    let navigate = useNavigate();
     useEffect(() => {
-        getExpenses()
+        if(localStorage.getItem('token')){
+            getExpenses(localStorage.getItem('token'));
+        }else{
+            navigate('/login');
+        }
+        
         // eslint-disable-next-line
     }, [])
 
@@ -23,7 +29,7 @@ function Expenses() {
     }
 
     const handleClick = (e)=>{ 
-        editExpense(expense.id, expense.etitle, expense.evalue, expense.ecategory)
+        editExpense(expense.id, expense.etitle, expense.evalue, expense.ecategory.localStorage.getItem('token'))
         refClose.current.click();
     }
 
