@@ -1,7 +1,8 @@
 <h1>Expense Tracker</h1>
 
 <h3>Dashboard</h3>
-![image](https://user-images.githubusercontent.com/60181536/150481916-e59dcb5a-8e01-4695-ac7c-de50088102ea.png)
+<img src="https://user-images.githubusercontent.com/60181536/150481916-e59dcb5a-8e01-4695-ac7c-de50088102ea.png" />
+
 
 <h3>Login</h3>
 ![image](https://user-images.githubusercontent.com/60181536/150481970-4da2ddd5-b750-4b50-8a70-9ac6eef5053b.png)
